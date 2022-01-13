@@ -1,0 +1,5 @@
+---
+# defaults file for deploy_apache_web
+destin_folder: /var/www/html
+
+destin_images_folder: "{{ destin_folder }}/images/"

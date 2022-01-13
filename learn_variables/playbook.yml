@@ -1,0 +1,32 @@
+---
+- name: My Super Yopta for Variables Playbook
+  hosts: all
+  become: yes
+
+  
+  vars:
+     message1: Privet
+     message2: World
+     secret : DSADasdadsASD
+
+  tasks:
+  - name: Print Secret variable
+    debug: 
+      var: secret
+    
+  - debug:
+      msg: "Secret World: {{ secret }}"
+  
+  - set_fact: full_message="{{ message1 }} {{message2}}"      
+
+  - debug: 
+      var: full_message
+
+  - debug:
+      var: ansible_distribution
+
+  - shell: uptime
+    register: results
+
+  - debug:
+      var: results

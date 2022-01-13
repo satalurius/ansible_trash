@@ -1,0 +1,58 @@
+
+---
+- name: Install Apache and Upload my Web Page
+  hosts: all
+  become: yes
+
+  vars: 
+    source_folder: ./MyWebSite
+    destin_folder: /var/www/html
+
+ 
+  tasks:
+  - name: Check and Print LINUX Version
+    debug: var=ansible_os_family
+
+  - block:      # For RedHat
+
+      - name: Install Apache Web Server for Redhat
+        yum: name=httpd state=latest
+
+      - name: Start WebServer and make it enabled on boot for RedHat
+        service: name=httpd state=started enabled=yes
+        
+    when: ansible_pkg_mgr == "dnf" 
+
+  - block:      # For Debian
+
+      - name: Install Apache Web Server For Debian
+        apt: name=apache2 state=latest
+
+      - name: Start WebServer for Debian
+        service: name=apache2 state=started enabled=yes
+
+    when: ansible_pkg_mgr == "apt" 
+
+  - name: Generate Index.html file
+    template: src={{ source_folder }}/index.j2 dest={{ destin_folder }}/index.html mode=055
+    notify: 
+      - Restart Apache RedHat
+      - Restart Apache Debian
+
+
+
+#  - name: Copy Page to Web Server
+#    copy: src={{ source_folder }} dest={{ destin_folder }} mode=055
+
+    notify: 
+      - Restart Apache RedHat
+      - Restart Apache Debian
+
+  handlers:
+  - name: Restart Apache RedHat
+    service: name=httpd state=restarted
+    when: ansible_pkg_mgr == "dnf" 
+
+  - name: Restart Apache Debian
+    service: name=apache2 state=restarted
+    when: ansible_pkg_mgr == "apt" 

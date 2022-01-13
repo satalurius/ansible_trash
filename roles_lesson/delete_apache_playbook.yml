@@ -1,0 +1,45 @@
+---
+
+- name: Delete Apache
+  hosts: all
+  become: yes
+  vars:
+     delete_folder: /var/www/html
+
+  tasks:
+  
+  - name: Stop Apaches Servers
+    notify:
+      - Stop Apache RedHat
+      - Stop Apache Debian
+
+  - block:      # For RedHat
+    
+      - name: Delete Apache
+        yum: name="httpd, httpd-tools, apr, apr-util" state=absent
+   
+    when: ansible_pkg_mgr == "dnf"
+
+
+  - block:      # For Debian
+    
+      - name: Delete Apache
+        yum: name=apache2 state=absent
+   
+    when: ansible_pkg_mgr == "apt"
+
+  - name: Delete Site folder
+    file:
+      path: "{{ delete_folder }}/"
+      state: absent
+   # with_fileglob: 
+   #   - " {{ delete_folder}}/*"
+
+  handlers:
+    - name: Stop Apache RedHat
+      service: name=httpd state=stopped
+      when: ansible_pkg_mgr == "dnf"
+
+    - name: Stop Apache Debian
+      service: name=httpd state=stopped
+      when: ansible_pkg_mgr == "apt"

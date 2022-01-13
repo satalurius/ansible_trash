@@ -1,0 +1,9 @@
+[GCP_SERVERS]
+linux1 ansible_host=34.88.138.128
+linux2 ansible_host=34.88.152.162
+linux3 ansible_host=35.228.220.208
+debian_linux ansible_host=34.88.205.247
+
+
+[AMAZON_SERVERS]
+amazon_1 ansible_host=3.67.225.246

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GENDALF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header__flex">
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="container">
+            <div class="content__flex">
+                <div class="content__brief-information">
+                    <div class="content__brief-information_elem">
+                        <h1>IT Quest</h1>
+                        <p>Добрый день, наш юный участник! 
+                            Ты готов окунуться в мир ИТ и заслужить звание продвинутого пользователя?
+                             В этом увлекательном путешествии тебе потребуются знания различных современных технологий, 
+                             таких как: HTML/CSS, SQL, BASH, SSH и многих других.
+                             Тебе ведь знакомы <b><i>инструменты</i></b> настоящих <b><i>разработчиков</i></b> и ты готов их использовать?
+                             Приключения будут иметь линейный характер, для самых внимательных мы оставили множество подсказок,
+                             будь осторожен, часть из них требует недюжего ума и сообразительности. 
+                            </p>
+                        <button id="btn" type="button" class="button" >
+                            <p id="test">Начать прохождение</p>
+                        </button>
+                    </div>
+                    <div id="reviews" class="reviews">
+                        <div class="reviews__flex">
+                            <div class="reviews__heading">
+                                <p>Данные для входа повреждены, потребуется помощь со стороны <b><i>разработчиков</i></b>. 
+                                Хотя, это лишнее, вы и сами справитесь.
+                                Возможно где-то на странице осталась копия.
+                            </p> 
+                            </div>
+                            <div id="reviews__content" class="reviews__content">
+                                <img class="ticket_img" src="./images/poluticket.png">
+                            <!-- 
+http://18.222.202.171:3033/
+gendalf_secret_login
+gendalf_super_passw0rd_happy_new_year_2022 
+                            -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__gendalf">
+                    <img src="images/logo.png" alt="" width="600px" height="600px">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="advantages">
+        <div class="container">
+            <div class="advantages__flex">
+                <div class="advantages__heading">
+
+                </div>
+                <div class="advantages__content">
+                    <div class="advantages__content_elem">
+                        <div class="advantages__elem_img">
+                            <a href="https://t.me/rksi_man"><img src="images/telegram.svg" alt=""></a>
+                        </div>
+                        <div class="advantages__elem_txt">
+                            <p>Мессенджер</p>
+                            <p>На связи со всем миром. Там могут отвечать не только люди.</p>
+                        </div>
+                    </div>
+                    <div class="advantages__content_elem">
+                        <div class="advantages__elem_img elem2">
+                            <img src="images/linux-penguin.png" alt="">
+                        </div>
+                        <div class="advantages__elem_txt">
+                            <p>Ubuntu Linux</p>
+                            <p>Многие известные проекты используют данную ОС, оценив её удобство и универсальность.</p>
+                        </div>
+                    </div>
+                    <div class="advantages__content_elem">
+                        <div onclick="showSqlAnswer()" id="sqlClick" class="advantages__elem_img elem3 clickable">
+                            <img src="images/phpAdminIcon.svg" width="67px" height="67px" alt="">                        </div>
+                        <div class="advantages__elem_txt">
+                            <p>SQL</p>
+                            <p>Писать запросы к БД можно вручную, но есть альтернативы.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__content_elem footer__elem1">
+                    <img src="images/logo.png" width="80px" height="80px" alt="">
+                    <p style="font-size: 24px; font-weight: bold">GENDALF</p>
+                </div>
+                <div class="footer__content_elem footer__elem2">
+                    <span class="icon vk"></span>
+                    <span class="icon instagram"></span>
+                    <span class="icon be"></span>
+                </div>
+                <div class="footer__content_elem footer__elem3">
+                    <div class="phone"><img src="images/phone-2.svg" alt=""><span>+7 900 000 00-00</span></div>
+                </div>
+            </div>
+            <div class="footer__flex">
+                <div class="footer__heading">
+                    2021 © Все права защищены
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <script src="sweetalert.min.js"></script> -->
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- <script src="index.js"></script> -->
+    <script src="page1.js"></script>
+</body>
+</html>

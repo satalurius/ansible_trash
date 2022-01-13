@@ -1,0 +1,5 @@
+[PROD_SERVERS_WEB]
+linux1 ansible_host=34.88.152.162   owner=Petya
+linux2 ansible_host=34.88.138.128   owner=Morgin
+linux3 ansible_host=35.228.220.208  owner=Zalpin
+debian_linux ansible_host=34.88.228.163 owner=Loper

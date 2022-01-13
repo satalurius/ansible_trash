@@ -1,0 +1,52 @@
+---
+# tasks file for deploy_apache_web
+
+- name: Create Site Directory
+  file:
+    path: "{{ destin_folder }}"
+    state: directory
+
+- name: Check and Print LINUX Version
+  debug: var=ansible_os_family
+
+- block:      # For RedHat
+    - name: Install Apache Web Server for Redhat
+      yum: name=httpd state=latest
+
+    - name: Start WebServer and make it enabled on boot for RedHat
+      service: name=httpd state=started enabled=yes
+        
+  when: ansible_pkg_mgr == "dnf" 
+
+- block:      # For Amazon
+    - name: Install Apache Web Server for Amazon
+      yum: name=httpd state=latest
+
+    - name: Start WebServer and make it enabled on boot for Amazon
+      service: name=httpd state=started enabled=yes
+        
+  when: ansible_pkg_mgr == "yum" 
+
+
+- block:      # For Debian
+    - name: Install Apache Web Server For Debian
+      apt: name=apache2 state=latest
+
+    - name: Start WebServer for Debian
+      service: name=apache2 state=started enabled=yes
+
+  when: ansible_pkg_mgr == "apt" 
+ 
+- name: Copy Page to Servers
+  copy: src={{ item }} dest={{ destin_folder }} mode=0555
+  with_fileglob:
+     - "*"
+
+- name: Copy Image Files 
+  copy: src={{ item }} dest={{ destin_images_folder }} mode=0555
+  with_fileglob:
+    - "images/*"
+
+  notify: 
+      - Restart Apache RedHat
+      - Restart Apache Debian
